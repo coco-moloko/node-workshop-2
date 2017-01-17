@@ -1,6 +1,6 @@
 var request = require("request");
 
-function requestJson(url, callback) {
+export default function requestJson(url, callback) {
     request(url, function(error, response) {
         if (error) {
             callback(error);
