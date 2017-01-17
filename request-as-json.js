@@ -1,17 +1,24 @@
-//first question - make a callback-recieving function
+var request = require("request");
 
 function requestJson(url, callback) {
-    var request = require("request");
-    request(url, function(error, response, body) {
+    request(url, function(error, response) {
         if (error) {
-            console.log ("oops, something went wrong!");
+            callback(error);
         }
         
         else {
             
+            try {
+                var parse = JSON.parse(response.body);
+                callback(null, parse);
+            }
+            
+            catch (error) {
+                callback(error);
+            }
         }
-    }
-    
+
+    });
 }
 
-console.log(requestJson())
+requestJson();
