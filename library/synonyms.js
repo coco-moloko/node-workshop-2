@@ -1,4 +1,3 @@
-//my api key = http://words.bighugelabs.com/api/2/3b86a6bba91c9e5365404342250efb80/word/json
 var request = require('request');
 
 function SynonymAPI(apiKey) {
@@ -6,7 +5,7 @@ function SynonymAPI(apiKey) {
 }
 
 SynonymAPI.prototype.getSynonyms = function(word, callback) {
-    var wordURL = "http://words.bighugelabs.com/api/2/3b86a6bba91c9e5365404342250efb80/" + word + "/json";
+    var wordURL = "http://words.bighugelabs.com/api/2/"+ this.apiKey +"/" + word + "/json";
     
     request(wordURL, function(error, result) {
         if (error) {
